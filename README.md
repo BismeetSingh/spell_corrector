@@ -9,3 +9,8 @@ To check words:
 python3 -m src.word_generator.check_words "/Users/bismeet/spelling_corrector/data/load_test.txt"
 ```
 
+To do spelling corrections
+
+```bash
+python3 -m src.word_generator.cmd  "/Users/bismeet/spelling_corrector/data/load_test.txt"
+```

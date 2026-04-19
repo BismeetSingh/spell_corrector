@@ -24,13 +24,15 @@ import argparse
 def run(words):
     spell_checker = SpellChecker()
     start_time = time.time()
+    with open(words[0], 'r') as f:
+        words = f.readlines()
     for word in words:
-        print(spell_checker.correct_word(word))
+        print(word.strip(), spell_checker.correct_word(word.strip()))
     end_time = time.time()
     print("Time :", (end_time - start_time) * 1000, "ms", 1 / (end_time - start_time), "words per second")
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser()
-    arg_parser.add_argument("words", nargs="+", help="Words to correct")
+    arg_parser.add_argument("file_path", nargs="+", help="Words to correct")
     args = arg_parser.parse_args()
-    run(args.words)
+    run(args.file_path)

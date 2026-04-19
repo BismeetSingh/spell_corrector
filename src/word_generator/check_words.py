@@ -22,7 +22,6 @@ def load_bloom_filter_from_disk(file_path):
     for i in range(trials):
         word = random_word()
         if bloom_filter.check(word):
-            print(word)
             false_positives += 1
 
     print("FP rate:", false_positives / trials)

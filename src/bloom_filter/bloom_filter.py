@@ -25,7 +25,6 @@ class BloomFilter:
 
     def add(self, word):
         for index in self.hashes(word):
-            print(index)
             self.bit_array[index // 8] |= (1 << (index % 8))
 
     def check(self, word):

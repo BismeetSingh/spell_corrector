@@ -2,7 +2,7 @@ from src.word_generator.generate_words import load_bloom_filter,generate_words_a
 from collections import defaultdict
 
 class SpellChecker:
-    def __init__(self, data):
+    def __init__(self):
         self.bloom_filter = load_bloom_filter()
 
     def correct_word(self, input_word):
@@ -12,7 +12,7 @@ class SpellChecker:
             one_off_words = self.create_one_off_words(input_word)
             word_with_highest_frequency = max(one_off_words, key=lambda x: self.bloom_filter.check(x))
             # print(word_with_highest_frequency, self.frequency_table.get(word_with_highest_frequency, 0))
-            if self.frequency_table.get(word_with_highest_frequency, 0) > 0:
+            if self.bloom_filter.check(word_with_highest_frequency):
                 return word_with_highest_frequency
             else:
                 two_off_words = []
